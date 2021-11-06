@@ -1,0 +1,29 @@
+.list-item-container {
+  background-color: #ffffff33;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 15px;
+  padding: 30px;
+  list-style: none;
+  width: 90%;
+  height: 120px;
+  cursor: pointer;
+}
+.team-image {
+  height: 60px;
+  width: 60px;
+}
+.team-name {
+  font-family: 'Bree Serif';
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-left: 10px;
+}
+.link-item {
+  text-decoration: none;
+  width: 40%;
+}
