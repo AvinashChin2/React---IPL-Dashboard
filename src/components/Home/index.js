@@ -13,7 +13,6 @@ class Home extends Component {
   getTeamsList = async () => {
     const {teamsList} = this.state
     const apiUrl = 'https://apis.ccbp.in/ipl'
-
     const response = await fetch(apiUrl)
     if (response.ok === true) {
       const data = await response.json()

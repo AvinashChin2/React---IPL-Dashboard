@@ -1,4 +1,8 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
+import LatestMatch from '../LatestMatch'
+import MatchCard from '../MatchCard'
+
 import './index.css'
 
 class TeamMatches extends Component {
@@ -25,7 +29,6 @@ class TeamMatches extends Component {
     const updatedData = {
       teamBannerUrl: data.team_banner_url,
     }
-    console.log(updatedData)
     const latestMatchUpdated = {
       competingTeam: data.latest_match_details.competing_team,
       competingTeamLogo: data.latest_match_details.competing_team_logo,
@@ -88,15 +91,35 @@ class TeamMatches extends Component {
       recentMatches,
       isLoading,
     } = this.state
-    const backgroundClassName = this.renderColorDetails
-    return (
-      <div className={backgroundClassName}>
-        <div className="image-container">
-          <img
-            src={teamMatches.teamBannerUrl}
-            alt="team banner"
-            className="team-banner"
-          />
+    const special = this.renderColorDetails
+    return isLoading ? (
+      <div testid="loader">
+        <Loader type="Oval" color="#ffffff" height={50} width={50} />
+      </div>
+    ) : (
+      <div className="team-container">
+        <div className="total-container">
+          <div className="image-container">
+            <img
+              src={teamMatches.teamBannerUrl}
+              alt="team banner"
+              className="team-banner"
+            />
+          </div>
+          <div className="team-content-container">
+            <h1 className="latest-matches">Latest Matches</h1>
+            <div className="latest-matches-container">
+              <LatestMatch
+                latestDetails={latestMatchDetails}
+                key={latestMatchDetails.id}
+              />
+            </div>
+            <ul className="match-card-container">
+              {recentMatches.map(eachMatch => (
+                <MatchCard matchCardDetails={eachMatch} key={eachMatch.id} />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     )
